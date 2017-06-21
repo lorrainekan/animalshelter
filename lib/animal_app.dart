@@ -17,25 +17,14 @@ class AnimalList extends StatelessWidget {
   Widget build(BuildContext context) {
     /// Builds the widget for one animal.
     Widget buildAnimalWidget(Animal animal) {
-      return new SizedBox(
-          height: 150.0,
-          child: new Row(children: [
-            new Image.asset(
-              animal.imageName,
-              width: 100.0,
-              fit: BoxFit.contain,
-            ),
-            new Expanded(
-                child: new Padding(
-                    padding: new EdgeInsets.all(8.0),
-                    child: new Column(children: [
-                      new Text(
-                        animal.name,
-                        style: new TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                      new Text(animal.description, softWrap: true),
-                    ]))),
-          ]));
+      return new ListTile(
+        leading: new Image.asset(animal.imageName, height: 100.0),
+        title: new Text(animal.name),
+        subtitle: new Text(
+          animal.description,
+        ),
+        isThreeLine: true,
+      );
     }
 
     /// Builds one animal widget per animal.
@@ -94,9 +83,7 @@ List<Animal> getFakeAnimalData() {
         'Scarlett',
         'images/scarlett.jpg',
         'This is Scarlett, a petite Cavalier King Charles Spaniel mixed with '
-        'something spicy, She is best with adults and mid sized humans, '
-        'the littles make her nervous. She really likes the boy dogs,'
-        ' not so sure about cats.'),
+        'something spicy, She is best with adults and mid sized humans.'),
     new Animal(
         'Annie',
         'images/annie.jpg',
